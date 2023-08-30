@@ -1,0 +1,33 @@
+<!-- Original stripes visualization by Ed Hawkins: https://twitter.com/ed_hawkins -->
+<!doctype html>
+<html>
+<head>
+<title>Warming Stripes</title>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="./stripes.js"></script>
+<script>
+window.onload = function() {
+	// CALL JS From here
+	readData("GLB.Ts+dSST.csv", "#land");
+};
+</script>
+</head>
+<style>
+p.info {
+	font-size: 10px;
+}
+
+</style>
+<body>
+<h1>Average global temperature from 1880 to 2022</h1>
+<p>Key: blue is cool and orange/red is warm.</p>
+
+@ JL 2023
+
+<p class="info">This visualisation was made on Elizabeth Robson's course: <a href="https://www.udemy.com/course/how-to-visualize-data-with-d3/">How to Visualize Data with D3</a>.<br>
+The original stripes visualization was made by <a href="https://twitter.com/ed_hawkins">Ed Hawkins</a>.<br></p>
+	<div id="land">
+	</div>
+</body>
+</html>
