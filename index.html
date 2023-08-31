@@ -1,3 +1,4 @@
+<!-- Made in Elisabeth Robson's course: How to Visualize Data with D3 -->
 <!-- Original stripes visualization by Ed Hawkins: https://twitter.com/ed_hawkins -->
 <!doctype html>
 <html>
@@ -12,6 +13,7 @@ window.onload = function() {
 	readData("GLB.Ts+dSST.csv", "#land");
 };
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 </head>
 <style>
 p.info {
@@ -19,6 +21,37 @@ p.info {
 }
 p.data {
 	font-size: 10px;
+}
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #555;
+    border-radius: 2px;
+    pointer-events: none;
+	position: absolute; /* Set the position to absolute */
+	transform: translate(0%, 120%); /* Position above the cursor and horizontally centered */
+}
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+	top: 50%; /* Position below the cursor */
+    left: 50%; /* Position horizontally centered */
+    transform: translateX(0%); /* Adjust for centering */
+}
+
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
 }
 </style>
 <body>
