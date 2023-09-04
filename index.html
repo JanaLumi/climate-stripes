@@ -3,10 +3,11 @@
 <!doctype html>
 <html>
 <head>
-<title>Warming Stripes</title>
+<title>Climate Stripes</title>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="./stripes.js"></script>
+<!--<script src="./stripes.js"></script>-->
+<script src="./stripes-resp.js"></script>
 <script>
 window.onload = function() {
 	// CALL JS From here
@@ -14,15 +15,42 @@ window.onload = function() {
 };
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+
 </head>
 <style>
+@media only screen and (min-width: 600px) {
+  div.panel, div.accordion {
+	width: 600px;
+  }
+}  
+
+body {
+	background-color: #252525;
+}
+
+p {
+	color: #dadaeb;
+	font-family: "Century Gothic", sans-serif;
+}
+h1, h2, h3 {
+	color: #dadaeb;
+	font-family: "Century Gothic", sans-serif;
+	padding: 0;
+	margin: 25px 0 0 0;
+}
 p.info {
 	font-size: 10px;
 }
 p.data {
 	font-size: 10px;
 }
+
+p.data-title {
+	font-size: 10px;
+	color: #000;
+}
 ul, li {
+	color: #dadaeb;
 	font-size: 10px;
 	padding: 0;
 	margin-left: 5px;
@@ -58,12 +86,46 @@ ul, li {
     top: 100%;
     left: 0;
 }
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+	font-family: "Century Gothic", sans-serif;
+	background-color: #999;
+	color: #000;
+	cursor: pointer;
+	padding: 5px;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0.4s;
+	width: 600px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 5px;
+  background-color: #363636;
+  font-family: "Century Gothic", sans-serif;
+  display: none;
+  overflow: hidden;
+}
+
 </style>
 <body>
-<h1>Average global temperature anomalies (°C) from 1880 to 2022</h1>
-The dataset is from NASA. It is a measure of the land surface temperature.<br>
-The land surface temperatures from around the globe are averaged together.<br>
-And that number is compared to the base period (1951-1980), which gives us the temperature anomaly.<br>
+<h1>Average global temperature anomalies (°C)</h1>
+<p style="margin: 0 0 10px 0;">from 1880 to 2022</p>
+<button class="accordion">&#9660 The dataset is from NASA's <a href="https://data.giss.nasa.gov/gistemp/">GISS Surface Temperature Analysis.</a></button>
+<div class="panel">
+<p>It is a measure of the land surface temperature.<br>The land surface temperatures from around the globe are averaged together.<br>
+And that number is compared to the base period (1951-1980), which gives us the temperature anomaly.</p>
+</div>
+
 
 <p>Key: blue is cool and orange/red is warm.</p>
 
@@ -71,8 +133,11 @@ And that number is compared to the base period (1951-1980), which gives us the t
 
 <div id="land">
 </div>
-	
-<p class="data"><b>Data: Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocean Temperature Index, L-OTI),</b><br>
+
+<button class="accordion"><p class="data-title">&#9660 <b>Data: Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies</b></p></button>
+<div class="panel">
+<p class="data">
+(Land-Ocean Temperature Index, L-OTI)<br>
 i.e. deviations from the corresponding 1951-1980 means.<br>
 Global-mean monthly, seasonal, and annual means, 1880-2022<br>
 <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>
@@ -81,9 +146,31 @@ Global-mean monthly, seasonal, and annual means, 1880-2022<br>
 <li> Lenssen, N., G. Schmidt, J. Hansen, M. Menne, A. Persin, R. Ruedy, and D. Zyss, 2019: Improvements in the GISTEMP uncertainty model. J. Geophys. Res. Atmos., 124, no. 12, 6307-6326, doi:10.1029/2018JD029522.</li>
 </ul>
 </p>
+</div>
 
 <p class="info">This visualisation was made on Elisabeth Robson's course: <a href="https://www.udemy.com/course/how-to-visualize-data-with-d3/">How to Visualize Data with D3</a>.<br>
 The original stripes visualization was made by <a href="https://twitter.com/ed_hawkins">Ed Hawkins</a>.<br></p>
 
 </body>
+<script>
+// accordion script
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
 </html>
