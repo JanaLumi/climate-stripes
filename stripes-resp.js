@@ -58,7 +58,8 @@ function graph(data, id) {
         let svg = d3.select(id + " svg");
 
         // Update SVG width based on container width
-        svg.attr("width", containerWidth);
+        svg.attr("width", containerWidth)
+			.attr("x", 0); // Align to the left by setting x to 0
 
         // Update the width of the rectangles based on the calculated stripeWidth
         let stripes = svg.selectAll("rect")
@@ -71,7 +72,8 @@ function graph(data, id) {
         .select(id)
         .append("svg")
         .attr("width", "100%") // Set initial width to 100% of the container
-        .attr("height", stripeHeight);
+        .attr("height", stripeHeight)
+		.attr("x", 0); // Align to the left by setting x to 0
 
     let tip = d3.tip()
         .attr("class", "d3-tip")
