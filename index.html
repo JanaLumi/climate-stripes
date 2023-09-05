@@ -18,23 +18,93 @@ window.onload = function() {
 
 </head>
 <style>
+
+/* Large screens */
 @media only screen and (min-width: 600px) {
+	p {
+        font-size: 16px; /* Adjust to your desired font size */
+    }
+	p.key {
+		font-size: 14px;
+	}
+	p.info {
+		font-size: 12px;
+	}
+	p.data {
+		font-size: 10px;
+		padding: 0;
+		margin: 0;
+	}
+	ul, li {
+		font-size: 10px;
+		margin:  0 0 0 10px;
+	}
 	div.panel, div.accordion {
 		width: 60%;
 	}
 	.d3-tip:after {
-	    font-size: 10px;
+	    font-size: 14px;
 	}
+	
+	/* Adjust font size for smaller screens in accordions */
+	.accordion p.acc-title {
+    font-size: 20px;
+	}
+	.accordion p.data-title {
+    font-size: 14px;
+	}
+	
+	/* Add any styles for larger screens here */
+    .stripe-container {
+        width: 600px; /* Set the width for larger screens */
+        margin: 0; /* Remove margin to align to the left on larger screens */
+    }
+    .stripe-rect {
+        width: 4px; /* Set the width of individual stripes on larger screens */
+    }
 }  
 
-@media only screen and (max-device-width: 600px) {
+/* Small screens */
+@media only screen and (max-device-width: 599px) {
+	p {
+        font-size: 16px; /* Adjust to your desired font size */
+    }
+	p.key {
+		font-size: 14px;
+	}
+	p.info {
+	font-size: 20px;
+	}
+	p.data {
+		font-size: 14px;
+	}
+	ul, li {
+		font-size: 14px;
+		margin:  0 0 0 20px;
+	}
+	/* accordion dimensions changes */
 	div.panel, div.accordion {
 		width: 100%;
-		font-size: 20px;
 	}
-	div.d3-tip {
+	div.d3-tip:after {
 	    font-size: 20px;
 	}
+	/* Adjust font size for smaller screens in accordions */
+	.accordion p.acc-title {
+		font-size: 30px;
+	}
+	.accordion p.data-title {
+		font-size: 22px;
+	}
+	
+	/* Adjust visualisation styles for smaller screens here */
+    .stripe-container {
+        width: 100%; /* Set a percentage-based width for smaller screens */
+        margin: 0; /* Remove margin to align to the left on smaller screens */
+    }
+    .stripe-rect {
+        width: 2px; /* Adjust the width of individual stripes for smaller screens */
+    }
 }  
 
 a {
@@ -49,26 +119,22 @@ p {
 	color: #dadaeb;
 	font-family: "Century Gothic", sans-serif;
 }
+
 h1, h2, h3 {
 	color: #dadaeb;
 	font-family: "Century Gothic", sans-serif;
 	padding: 0;
 	margin: 25px 0 0 0;
 }
-p.info {
-	font-size: 10px;
-}
+
 p.data {
-	font-size: 10px;
 	padding: 0;
 	margin: 0;
 }
 
 ul, li {
 	color: #dadaeb;
-	font-size: 10px;
 	padding: 0;
-	margin:  0 0 0 10px;
 }
 
 .d3-tip {
@@ -87,7 +153,7 @@ ul, li {
     box-sizing: border-box;
     display: inline;
     width: 100%;
-//    font-size: 10px;
+    /* font-size: 10px; */
     line-height: 1;
     content: "\25BC";
     position: absolute;
@@ -131,15 +197,23 @@ ul, li {
 	margin: 0;
 	border: none;
 	background-color: #363636;
+	color: #dadaeb;
 	font-family: "Century Gothic", sans-serif;
 	display: none;
 	overflow: hidden;
 }
 
+.accordion p.acc-title {
+    color: #252525;
+	font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
 /* Style the text inside the accordion button */
 .accordion p.data-title {
-    font-size: 10px;
     color: #252525;
+	font-weight: 600;
     padding: 0;
     margin: 0;
 }
@@ -148,31 +222,30 @@ ul, li {
 <body>
 <h1>Average global temperature anomalies (°C)</h1>
 <p style="margin: 0 0 10px 0;">from 1880 to 2022</p>
-<button class="accordion">&#9660 The dataset is from NASA's <a href="https://data.giss.nasa.gov/gistemp/">GISS Surface Temperature Analysis.</a></button>
+<button class="accordion"><p class="acc-title">&#9660 The dataset is from NASA's <a href="https://data.giss.nasa.gov/gistemp/">GISS Surface Temperature Analysis.</a></p></button>
 <div class="panel">
-<p>It is a measure of the land surface temperature.<br>The land surface temperatures from around the globe are averaged together.<br>
-And that number is compared to the base period (1951-1980), which gives us the temperature anomaly.</p>
+It is a measure of the land surface temperature.<br>The land surface temperatures from around the globe are averaged together.<br>
+And that number is compared to the base period (1951-1980), which gives us the temperature anomaly.
 </div>
 
 
-<p>Key: blue is cool and orange/red is warm.</p>
+<p class="key">Key: blue is cool and orange/red is warm.</p>
 
 <p>@ JL 2023</p>
 
 <div id="land">
 </div>
 
-<button class="accordion"><p class="data-title">&#9660 <b>Data: Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies</b></p></button>
+<button class="accordion"><p class="data-title">&#9660 Data: Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies</p></button>
 <div class="panel">
 <p class="data">
 (Land-Ocean Temperature Index, L-OTI)<br>
 i.e. deviations from the corresponding 1951-1980 means.<br>
-Global-mean monthly, seasonal, and annual means, 1880-2022 <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>
+Global-mean monthly, seasonal, and annual means, 1880-2022 <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a></p>
 <ul style="margin-top: 0px;">
 <li> GISTEMP Team, 2023: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 20YY-MM-DD at <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>.</li>
 <li>Lenssen, N., G. Schmidt, J. Hansen, M. Menne, A. Persin, R. Ruedy, and D. Zyss, 2019: Improvements in the GISTEMP uncertainty model. J. Geophys. Res. Atmos., 124, no. 12, 6307-6326, doi:10.1029/2018JD029522.</li>
 </ul>
-</p>
 </div>
 
 <p class="info">This visualisation was made on Elisabeth Robson's course: <a href="https://www.udemy.com/course/how-to-visualize-data-with-d3/">How to Visualize Data with D3</a>.<br>
