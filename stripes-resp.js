@@ -49,7 +49,7 @@ function graph(data, id) {
     // Function to update SVG dimensions based on container size
     function updateDimensions() {
         let container = document.querySelector(id);
-        let containerWidth = container.clientWidth;
+        let containerWidth = container.clientWidth * 0.99;
 
         // Calculate stripeWidth based on the container width and number of data points
         let numStripes = data.length;
