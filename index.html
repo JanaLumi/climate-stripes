@@ -24,6 +24,10 @@ window.onload = function() {
   }
 }  
 
+a {
+	color: #fed976;
+}
+
 body {
 	background-color: #252525;
 }
@@ -43,18 +47,17 @@ p.info {
 }
 p.data {
 	font-size: 10px;
+	padding: 0;
+	margin: 0;
 }
 
-p.data-title {
-	font-size: 10px;
-	color: #000;
-}
 ul, li {
 	color: #dadaeb;
 	font-size: 10px;
 	padding: 0;
-	margin-left: 5px;
+	margin:  0 0 0 10px;
 }
+
 .d3-tip {
     line-height: 1;
     font-weight: bold;
@@ -90,10 +93,11 @@ ul, li {
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
 	font-family: "Century Gothic", sans-serif;
-	background-color: #999;
+	background-color: #807dba;
 	color: #000;
 	cursor: pointer;
 	padding: 5px;
+	margin: 0;
 	width: 100%;
 	text-align: left;
 	border: none;
@@ -104,16 +108,29 @@ ul, li {
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-  background-color: #ccc;
+	background-color: #9e9ac8;
+	padding: 5px;
+	margin: 0;
+	border: none;
 }
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-  padding: 0 5px;
-  background-color: #363636;
-  font-family: "Century Gothic", sans-serif;
-  display: none;
-  overflow: hidden;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: #363636;
+	font-family: "Century Gothic", sans-serif;
+	display: none;
+	overflow: hidden;
+}
+
+/* Style the text inside the accordion button */
+.accordion p.data-title {
+    font-size: 10px;
+    color: #252525;
+    padding: 0;
+    margin: 0;
 }
 
 </style>
@@ -139,11 +156,10 @@ And that number is compared to the base period (1951-1980), which gives us the t
 <p class="data">
 (Land-Ocean Temperature Index, L-OTI)<br>
 i.e. deviations from the corresponding 1951-1980 means.<br>
-Global-mean monthly, seasonal, and annual means, 1880-2022<br>
-<a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>
-<ul style="margin-top:-5px;">
+Global-mean monthly, seasonal, and annual means, 1880-2022 <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>
+<ul style="margin-top: 0px;">
 <li> GISTEMP Team, 2023: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 20YY-MM-DD at <a href="https://data.giss.nasa.gov/gistemp/">https://data.giss.nasa.gov/gistemp/</a>.</li>
-<li> Lenssen, N., G. Schmidt, J. Hansen, M. Menne, A. Persin, R. Ruedy, and D. Zyss, 2019: Improvements in the GISTEMP uncertainty model. J. Geophys. Res. Atmos., 124, no. 12, 6307-6326, doi:10.1029/2018JD029522.</li>
+<li>Lenssen, N., G. Schmidt, J. Hansen, M. Menne, A. Persin, R. Ruedy, and D. Zyss, 2019: Improvements in the GISTEMP uncertainty model. J. Geophys. Res. Atmos., 124, no. 12, 6307-6326, doi:10.1029/2018JD029522.</li>
 </ul>
 </p>
 </div>
