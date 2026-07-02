@@ -1,2 +1,2 @@
 # Climate Stripes
-[Live Demo](https://climate-stripes.netlify.app/)
+[Live Demo](https://janalumi.github.io/climate-stripes/)/)
